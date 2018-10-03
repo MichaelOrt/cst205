@@ -1,18 +1,9 @@
-# warm-image-filer.py - apply a strange filter
-# author: Wes Modes wmodes@csumb.edu
-# date: 18 Sep 2018
-
 # get Image class from Pillow module
 from PIL import Image
 
 # constants
 # these define how much we want to change each pixel color
-warm_delta_red = 30
-warm_delta_green = 20
-warm_delta_blue = -10
-cool_delta_red = -20
-cool_delta_green = -10
-cool_delta_blue = 30
+nudge = 30
 
 def fix_color(n):
     """Take an integer and make sure it isn't too high
@@ -28,10 +19,13 @@ def fix_color(n):
 
 #open image
 im = Image.open("images/bit.jpg")
-width, height = im.size # returns tuple of width & height
+width, height = im.size
+
+# create color dict
+color_dict = {}
 
 # apply cool filter to left most 1/3
-for x in range(0,int(width/3)):
+for x in range(0,width):
     for y in range(height):
         red,green,blue = im.getpixel((x,y))
         newcolor = (fix_color(red + cool_delta_red),
