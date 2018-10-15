@@ -10,10 +10,12 @@
   <h1>Nasa's APOD <small>CST 205</small></h1>
 
   {% if data %}
-    {% for i in data %}
+    {% for photo in data %}
       <br>
-      <h2><small>{{i['title']}}</small></h2>
-      <img src="{{i['url']}}" alt="" width="300"  class="img-rounded">
+      <h3>{{photo['title']}}</h3>
+      <div><small>{{photo['date']}}</small></div>
+      <div><img src="{{photo['url']}}" alt="" width="300"  class="img-rounded"></div>
+      <p>{{photo['explanation']}}</p>
       <br><br>
     {% endfor %}
   {% else %}

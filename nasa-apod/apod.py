@@ -9,9 +9,9 @@ bootstrap = Bootstrap(app)
 my_key = 'DEMO_KEY'
 
 payload = {
-  'api_key': my_key,
-  'start_date': '2017-03-09',
-  'end_date': '2017-03-11'
+  'api_key': 'USE YOUR KEY HERE',
+  'start_date': '2018-10-15',
+  'end_date': '2018-10-15'
 }
 
 endpoint = 'https://api.nasa.gov/planetary/apod'
