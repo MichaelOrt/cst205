@@ -15,8 +15,9 @@ class Form(QWidget):
         self.height = height
 
         self.picture = QLabel()
-        self.pixmap = QPixmap("images/chualar_sign.jpg")
-        self.picture.setPixmap(self.pixmap)
+        self.pixmap1 = QPixmap("images/chualar_sign.jpg")
+        self.pixmap2 = QPixmap("images/bit.jpg")
+        self.picture.setPixmap(self.pixmap1)
 
         layout = QGridLayout()
         layout.addWidget(self.picture, 0, 0)
@@ -34,9 +35,15 @@ class Form(QWidget):
         self.height = height
         self.setGeometry(100,100,self.width, self.height)
 
+    def change_pix(self):
+        self.picture.setPixmap(self.pixmap2)
+
 app = QApplication(sys.argv)
 ex = Form(height=1000, width=200)
 # ex.set_size(1000,1000)
 
 ex.show()
+input("hit enter")
+ex.change_pix()
+
 sys.exit(app.exec_())

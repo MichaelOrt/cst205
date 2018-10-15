@@ -1,0 +1,21 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+  Test
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+<h1>{{data["artists"]["items"][0]["name"]}}</h1>
+
+<h3>Genres</h3>
+
+<ul>
+  {% for i in data["artists"]["items"][0]["genres"]%}
+  <li>{{i}}</li>
+  {% endfor %}
+</ul>
+
+</div>
+{% endblock %}

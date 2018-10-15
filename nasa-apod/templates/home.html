@@ -1,0 +1,24 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+  CST 205 APOD
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  <h1>Nasa's APOD <small>CST 205</small></h1>
+
+  {% if data %}
+    {% for i in data %}
+      <br>
+      <h2><small>{{i['title']}}</small></h2>
+      <img src="{{i['url']}}" alt="" width="300"  class="img-rounded">
+      <br><br>
+    {% endfor %}
+  {% else %}
+    no data
+  {% endif %}
+
+</div>
+{% endblock %}
