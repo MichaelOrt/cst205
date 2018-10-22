@@ -8,6 +8,14 @@ app = Flask(__name__)
 app.secret_key = 'development'
 Bootstrap(app)
 
+# authentication keys in authenticate.py in same dir
+# (not in github repo)
+# go to: https://developer.spotify.com/dashboard/applications
+#blueprint = make_spotify_blueprint(
+#    client_id='..client key..',
+#    client_secret='..client secret..',
+#    scope='playlist-modify-public streaming user-library-read',
+#)
 
 app.register_blueprint(blueprint, url_prefix='/login')
 
