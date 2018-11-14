@@ -56,4 +56,4 @@ def new_wav(channels, filename, *args):
             mat.tobytes()
         )
 
-new_wav(1,'mysong', 200, 252, 212, 400, 150, 360)
+new_wav(1,'mysong', 440, 200, 252, 212, 400, 150, 360)

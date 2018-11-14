@@ -1,3 +1,8 @@
+# bs-test1
+# Testing beautiful soup
+# author: Wes Modes <wmodes@csumb.edu>
+#
+
 from bs4 import BeautifulSoup
 
 html_doc = """
