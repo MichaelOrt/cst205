@@ -7,6 +7,24 @@ object_list = [
     "synonyms" : ["lab", "laboratory", "scientists"],
     "exits" : ["foyer", "basement"]
     },
+    "key", "vomit",
+    "title", "Dragon's Vomit",
+    "type", "item",
+    "takable" : False,
+    "description" : "sfdsaf",
+    "effect" : {
+        "inspect": ["examine vomit", "move endgame"]
+    },
+    {
+    "key" : "broken_furniture",
+    "type" : "item",
+    "effect" : {
+        "inspect": [("add_to_inventory", "bullet"),
+                    ("describe", 
+                    """You found abullet!""") ]
+        }
+    }
+
 
 ]
 
