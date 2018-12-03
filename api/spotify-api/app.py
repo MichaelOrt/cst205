@@ -2,7 +2,12 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_dance.contrib.spotify import make_spotify_blueprint, spotify
 from flask_bootstrap import Bootstrap
 import requests, json, urllib.parse
-from authenticate import *
+
+blueprint = make_spotify_blueprint(
+    client_id='6bcc1e7cb9da4fe09feb3375b227c9fb',
+    client_secret='2fbb802629a6472e8701f73999b491f3',
+    scope='playlist-modify-public streaming user-library-read',
+)
 
 app = Flask(__name__)
 app.secret_key = 'development'
