@@ -21,7 +21,7 @@ object_list = [
     "effect" : {
         "inspect": [("add_to_inventory", "bullet"),
                     ("describe", 
-                    """You found abullet!""") ]
+                    """You found a bullet!""") ]
         }
     }
 
