@@ -6,11 +6,16 @@ from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 import pandas as pd
 import re
 import os
-
+from urllib.parse import urlparse
+import logging
 
 class MailSpider(scrapy.Spider):
     
     name = 'email'
+
+    def __init__(self, *args, **kwargs):
+        logging.getLogger('scrapy').setLevel(logging.INFO)
+        super().__init__(*args, **kwargs)
     
     def parse(self, response):
         
@@ -29,8 +34,15 @@ class MailSpider(scrapy.Spider):
             
         html_text = str(response.text)
         mail_list = re.findall(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+", html_text)
+        parsed_uri = urlparse(response.url)
+        domain = '{uri.netloc}'.format(uri=parsed_uri)
+        domain = domain.replace("www.", "")
 
-        dic = {'email': mail_list, 'link': str(response.url)}
+        dic = {
+                'domain': domain, 
+                'email': mail_list, 
+                'link': str(response.url)
+            }
         df = pd.DataFrame(dic)
         
         df.to_csv(self.savefile, mode='a', header=False)
@@ -57,13 +69,14 @@ def get_info(urlfile, savefile, reject=[]):
     url_list = []
     if os.path.exists(urlfile):
         with open(urlfile) as file:
-            for line in file.readlines():
-                url_list.append(line)
+            url_list = file.read().splitlines()
     else:
         print('No url file '+ urlfile + 'found.')
 
+    #print("Full list:\n",url_list)
+
     create_file(savefile)
-    df = pd.DataFrame(columns=['email', 'link'], index=[0])
+    df = pd.DataFrame(columns=['domain', 'email', 'link'], index=[0])
     df.to_csv(savefile, mode='w', header=True)
     
     print('Searching for emails...')
@@ -73,10 +86,10 @@ def get_info(urlfile, savefile, reject=[]):
     
     print('Cleaning emails...')
     df = pd.read_csv(savefile, index_col=0)
-    df.columns = ['email', 'link']
+    df.columns = ['domains', 'email', 'link']
     df = df.drop_duplicates(subset='email')
     df = df.reset_index(drop=True)
-    df.to_csv(savefile, mode='w', header=True)
+    df.to_csv(savefile, mode='w', header=True, index=False)
     
     return df
 
