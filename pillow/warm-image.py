@@ -27,7 +27,7 @@ def fix_color(n):
     return n
 
 #open image
-im = Image.open("bit.jpg")
+im = Image.open("../images/bit.jpg")
 width, height = im.size # returns tuple of width & height
 
 # apply cool filter to left most 1/3
