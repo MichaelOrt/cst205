@@ -39,7 +39,7 @@ class Form(QWidget):
         self.picture.setPixmap(self.pixmap2)
 
 app = QApplication(sys.argv)
-ex = Form(height=1000, width=200)
+ex = Form(height=1000, width=1000)
 # ex.set_size(1000,1000)
 
 ex.show()

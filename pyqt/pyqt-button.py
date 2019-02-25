@@ -1,4 +1,4 @@
-import sys
+ximport sys
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QVBoxLayout, QLabel
 from PyQt5.QtCore import pyqtSlot
 
