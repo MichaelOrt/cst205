@@ -18,12 +18,14 @@ class MainWindow(QWidget):
     def __init__(self, width=200, height=400):
         super().__init__()
 
+        # store object variables/attributes
+        self.my_width = width
+        self.my_height = height
+
         # create dial widget object
         self.dial = QDial()
         self.dial.setNotchesVisible(True)
         self.spinbox = QSpinBox()
-        self.width = width
-        self.height = height
 
         # create pixmap widget object (as part of a Qlabel widget)
         self.picture = QLabel()
@@ -45,7 +47,7 @@ class MainWindow(QWidget):
 
         # add our layout to the window
         self.setLayout(layout)
-        self.setGeometry(100,100,self.width, self.height) 
+        self.setGeometry(100,100,self.my_width, self.my_height) 
         self.setWindowTitle("Photo Adjustment")
 
         # link dial and form

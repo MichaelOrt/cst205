@@ -11,7 +11,7 @@ def home():
 
 @app.route('/hello')
 def hello():
-    return 'Hello world from Flask' + saymyname()
+    return 'Hello world from Flask! ' + saymyname()
 
 @app.route('/whoami')
 def whoami():
